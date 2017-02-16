@@ -14,6 +14,7 @@ export class AppComponent {
   /**
    * constructor method to initialize all variables
    * and to fetch the grocery list from firebase json object
+   * Inject AngularFire
    */
   constructor(private af: AngularFire){
     this.items = af.database.list('/items');
