@@ -7,9 +7,10 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Grocery App';
+  title: string;
   newItem : groceryItem;
   items: FirebaseListObservable<any[]>;
+  isLoading: Boolean;
 
   /**
    * constructor method to initialize all variables
@@ -17,7 +18,10 @@ export class AppComponent {
    * Inject AngularFire
    */
   constructor(private af: AngularFire){
+    this.isLoading = true;
+    this.title ="Grocery App";
     this.items = af.database.list('/items');
+    this.items.subscribe(x => this.isLoading = false );
     this.newItem = {
       product: '',
       quantity: 1,
