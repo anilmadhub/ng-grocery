@@ -12,6 +12,9 @@ h1.title span{
 .grocery-list li{
     padding-bottom: 18px;
 }
-.item-remove{
+/*.item-remove{
     padding-bottom: 6px;
+}*/
+input.quantity{
+    max-width: 50px;
 }

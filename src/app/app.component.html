@@ -1,6 +1,6 @@
 <!--form in panel-->
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6 col-md-offset-3 col-xs-12">
     <h1 class="text-center title"><span class="glyphicon glyphicon-leaf"></span> {{title}} </h1>
     <div class="panel panel-default">
       <div class="panel-body">
@@ -8,7 +8,7 @@
           <div class="input-group">
             <input class="form-control" type="text" name="newItem.product" [(ngModel)]="newItem.product" placeholder="Add product" required/>
             <span class="input-group-btn" style="width:0px;"></span>
-            <input class="form-control" type="text" name="newItem.quantity" [(ngModel)]="newItem.quantity" placeholder="Qty" style="margin-left:-1px" required/>
+            <input class="form-control quantity" type="text" name="newItem.quantity" [(ngModel)]="newItem.quantity" placeholder="Qty" style="margin-left:-1px" required/>
             <span class="input-group-btn">
               <button class="btn btn-primary" (click) = "addItemToList()">Add Item</button>
             </span>
@@ -21,7 +21,7 @@
 
 <!-- list of grocery items-->
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6 col-md-offset-3 col-xs-12">
     <ul class="list-group grocery-list">
       <li class="list-group-item" [ngClass]="{'list-group-item-success':item.inBasket}" *ngFor = "let item of items | async">
         
