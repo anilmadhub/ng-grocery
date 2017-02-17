@@ -33,17 +33,20 @@ export class AppComponent {
    * Function to add items to the grocery list
    */
   addItemToList() {
-    let product = this.newItem.product;
-    let inBasket = this.newItem.inBasket;
-    let quantity = this.newItem.quantity;
-    this.af.database.object(`/items/${product}`).set({ inBasket : inBasket, quantity : quantity });
-    
-    //reinitialise the item variable
-    this.newItem = {
-      product: '',
-      quantity: 1,
-      inBasket: false
-    };
+
+    let isProductValid: boolean;
+    let isQtyValid: boolean;
+
+    isProductValid  = (typeof this.newItem.product !='undefined' && this.newItem.product )? true : false;
+    isQtyValid = (typeof this.newItem.quantity !='undefined' && this.newItem.quantity )? true : false;
+
+    if(isProductValid && isQtyValid ){
+      let product = this.newItem.product;
+      let inBasket = this.newItem.inBasket;
+      let quantity = this.newItem.quantity;
+      this.af.database.object(`/items/${product}`).set({ inBasket : inBasket, quantity : quantity });
+    }
+
   }
 
   /**
@@ -59,6 +62,10 @@ export class AppComponent {
    */
   removeItem(product){
     this.af.database.object(`/items/${product}`).remove();
+  }
+
+  clearInputProduct(){
+    this.newItem.product = "";
   }
 
 }
